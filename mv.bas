@@ -3,15 +3,15 @@
    30  if instr(dir$, argv$(1)) < 0 then print "%file not found" : end
    40  myf$ = mid$(mid$(dir$, instr(dir$, argv$(1))),2)
    50  myf$ = left$(myf$, instr(myf$, " "))
-   60  print " copy " + myf$ + " to " + argv$(2) "? y/N" ; : cont1$ = inkey$
+   60  print " move " + myf$ + " to " + argv$(2) "? y/N" ; : cont1$ = inkey$
    70  print
    80  if cont1$ <> "y" then end
    90  gosub 180
   100  gosub 210
   110  gosub 320
-  120  if fsize = 0 then print "%file invalid, cannot copy 0 bytes" : end
+  120  if fsize = 0 then & "%file invalid, cannot move 0 bytes" : end
   130  gosub 370
-  135 th_exec "rm " + argv$(1)
+  135  th_exec "rm " + argv$(1)
   140  print " done (" + str$(nint(fsize/1000)) + " KB copied)"
   150  end
   160  rem usage
